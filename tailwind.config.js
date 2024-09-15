@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      backgroundImage: {
+        'menu-bg': "url('/src/assets/bgWhite.png')", // Adjust path based on your structure
+      },
       colors: {
         primaryColor: "#edf2f8",   /* Tailwind: bg-blue-50 */
         secondaryColor: "#313bac", /* Tailwind: bg-indigo-600 */
