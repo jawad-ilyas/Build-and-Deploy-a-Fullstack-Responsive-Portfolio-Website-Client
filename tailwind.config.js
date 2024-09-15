@@ -8,6 +8,7 @@ export default {
     extend: {
       backgroundImage: {
         'menu-bg': "url('/src/assets/bgWhite.png')", // Adjust path based on your structure
+        'home-bg': "url('/src/assets/bgIMG.png')", // Adjust path based on your structure
       },
       colors: {
         primaryColor: "#edf2f8",   /* Tailwind: bg-blue-50 */

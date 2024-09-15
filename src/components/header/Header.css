@@ -1,0 +1,14 @@
+.circle-cmp:nth-child(1)
+{
+    width: 100px;
+    height: 100px;
+}
+.circle-cmp:nth-child(2) {
+    margin: 1.75rem;
+    width: 150px;
+    height: 150px;
+}
+.circle-cmp:nth-child(3) {
+    width: 90px;
+    height: 90px;
+}
