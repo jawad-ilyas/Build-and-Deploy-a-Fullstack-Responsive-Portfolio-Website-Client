@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
-import { images } from "../../constants/"
+import { images } from "../../constants"
+import AppWrapper from "../../wrapper/AppWrap"
 import "./Header.css"
 const Header = () => {
   const scaleVariants = {
@@ -69,4 +70,4 @@ const Header = () => {
   )
 }
 
-export default Header
+export default AppWrapper(Header,"home")

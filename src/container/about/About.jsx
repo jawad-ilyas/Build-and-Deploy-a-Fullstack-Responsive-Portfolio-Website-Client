@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
+import AppWrapper from "../../wrapper/AppWrap"
 import { images } from "../../constants"
 import Container from "../Container"
 const About = () => {
@@ -47,4 +47,4 @@ const About = () => {
   )
 }
 
-export default About
+export default AppWrapper(About , "about")

@@ -6,7 +6,7 @@ import { useState } from "react";
 const Navbar = () => {
   const [toggle, setToggle] = useState(false)
   return (
-    <div id='navbar' style={{ background: "rgba(255,255,255,0.45)", backdropFilter: "blur(8)" }} className='sm:px-10 sm:py-8 fixed top-0 z-[8]  w-full'>
+    <div id='navbar' style={{ background: "rgba(255,255,255,0.45)", backdropFilter: "blur(8)" }} className='sm:px-10 sm:py-8 fixed top-0 z-50 w-full'>
       <nav className='container mx-auto flex flex-row justify-between  sm:items-center items-start'>
         <div>
           <h1 className='font-bold text-2xl  hover:text-secondaryColor hover:duration-300 cursor-pointer p-4 md:p-0'>JMD</h1>
