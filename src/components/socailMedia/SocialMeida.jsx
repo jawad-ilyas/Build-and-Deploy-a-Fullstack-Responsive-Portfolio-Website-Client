@@ -2,14 +2,14 @@ import {  FaTwitterSquare, FaFacebookSquare, FaInstagramSquare } from "react-ico
 const SocialMeida = () => {
     return (
         <div className="app__social">
-            <div>
-                <FaTwitterSquare size={20} />
+            <div className="">
+                <FaTwitterSquare className="cursor-pointer  my-1 rounded-full " size={20}  />
             </div>
             <div>
-                <FaFacebookSquare size={20} />
+                <FaFacebookSquare className="cursor-pointer  my-1 rounded-full " size={20} />
             </div>
             <div>
-                <FaInstagramSquare size={20} />
+                <FaInstagramSquare className="cursor-pointer  my-1 rounded-full " size={20} />
             </div>
         </div>
     )

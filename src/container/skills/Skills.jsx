@@ -5,6 +5,7 @@ import axios from "axios"
 import { ApiUrl } from "../../constant"
 import Container from "../Container"
 import { Tooltip } from 'react-tooltip'
+import MotionWrap from "../../wrapper/MotionWrap"
 
 
 const Skills = () => {
@@ -15,7 +16,7 @@ const Skills = () => {
 
     await axios.get(`${ApiUrl}/skill/fetchSkill`)
       .then((response) => {
-        console.log("Work js :: fetchSkill :: response", response)
+        console.log("Skill js :: fetchSkill :: response", response)
         setSkills(response?.data?.data)
       })
   }
@@ -24,7 +25,7 @@ const Skills = () => {
 
     await axios.get(`${ApiUrl}/experience/fetchExperiences`)
       .then((response) => {
-        console.log("Work js :: fetchExperience :: response", response)
+        console.log("Skill js :: fetchExperience :: response", response)
         setExperiences(response?.data?.data)
       })
   }
@@ -58,7 +59,7 @@ const Skills = () => {
         </motion.div>
         <motion.div className="app__skills-exp  flex flex-center justify-center content-center flex-col   w-2/5">
           {experiences?.map((workExp, index) => (
-            <div key={index} className=" my-4 flex flex-row   px-4 py-2 rounded-md">
+            <div key={index + workExp?.year} className=" my-4 flex flex-row   px-4 py-2 rounded-md">
               <h1 className="me-8 text-secondaryColor">{workExp?.year}</h1>
 
               {
@@ -73,7 +74,7 @@ const Skills = () => {
 
                       className="app__skills-exp-work flex flex-col justify-normal items-start transition-all duration-300 cursor-pointer ease-in-out app__flex"
 
-                      key={index}>
+                      key={index + exp.workExperienceName}>
                       <h4 className="bold-text font-medium">{exp.workExperienceName}</h4>
                       <p className="p-text font-light  text-grayColor mt-1">{exp.workExperienceCompany}</p>
 
@@ -94,4 +95,4 @@ const Skills = () => {
   )
 }
 
-export default AppWrap(Skills, "skills", "bg-white")
+export default AppWrap(MotionWrap(Skills), "skills", "bg-white")

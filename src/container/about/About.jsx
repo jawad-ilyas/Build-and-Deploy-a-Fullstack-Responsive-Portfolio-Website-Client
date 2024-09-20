@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import AppWrapper from "../../wrapper/AppWrap"
 import { images } from "../../constants"
 import Container from "../Container"
+import MotionWrap from "../../wrapper/MotionWrap"
 const About = () => {
 
   const abouts = [
@@ -26,7 +27,7 @@ const About = () => {
         </h2>
 
 
-        <div className="app__profiles  grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-start flex-wrap mt-8">
+        <div className="app__profiles   grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-start flex-wrap mt-8">
           {abouts.map((about, index) => (
             <motion.div
               whileInView={{ opacity: 1 }}
@@ -47,4 +48,4 @@ const About = () => {
   )
 }
 
-export default AppWrapper(About , "about")
+export default AppWrapper(MotionWrap(About) , "about")

@@ -4,9 +4,12 @@ import { motion } from "framer-motion"
 import AppWrap from "../../wrapper/AppWrap"
 import axios from "axios"
 import { ApiUrl } from "../../constant"
+import MotionWrap from "../../wrapper/MotionWrap"
+
 import Container from "../Container"
 // import {urlFor , client} from "../../client"
 const Work = () => {
+  const [isLoading, setIsLoading] = useState(true)
   const [activeFilter, setActiveFilter] = useState('Web App');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [works, setWorks] = useState([])
@@ -76,6 +79,7 @@ const Work = () => {
         console.log("Work js :: fetchWork :: response", response)
         setWorks(response?.data?.data)
         setFilterWork(response?.data?.data)
+        setIsLoading(false)
       })
   }
 
@@ -104,72 +108,165 @@ const Work = () => {
         }
       </div>
 
-      <motion.div
-        animate={animateCard}
-        transition={{ duration: 0.5, delayChildren: 0.5 }}
-        className="app__work-portfolio grid lg:grid-cols-3 grid-col-1 gap-4"
-      >
-        {
-          filterWork.map((work, index) => (
-            <div key={work + index} className="app__work-item hover:shadow-2xl p-4 rounded-lg bg-white text-black   app__fles">
-              <div className="app__work-img relative app__flex">
-                <div className="relative">
-                  <img className="w-full   lg:h-[200px] md:h-[350px] rounded-lg" src={work?.workImgUrl} alt={work?.workName} />
-                  <motion.div
-                    whileHover={{ opacity: [0, 1] }}
-                    transition={{ duration: 0.25, ease: "easeInOut", staggerChildren: 0.5 }}
-                    className="app__work-hover  opacity-0  absolute group hover:opacity-100  rounded-lg inset-0 w-full h-full hover:bg-black/20  app__flex"
-                  >
-                    <a href={work?.workProjectLink} className="opacity-0 absolute group-hover:opacity-100 top-[50%] left-[42%]   rounded-full" target="_blank" rel="noreferrrer">
-                      <motion.div
-                        whileInView={{ scale: [0, 1] }}
-                        whileHover={{ scale: [1, 0.9] }}
-                        transition={{ duration: 0.25 }}
-                        className="app__flex"
-                      >
-                        <AiFillEye size={30} />
+      {isLoading ?
+        <div className="grid grid-cols-3  gap-12">
+          <div className="border-gray-300 bg-slate-100 animate-bounce   shadow-2xl p-3">
+            <div className="py-32 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-4 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-8 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-1  flex flex-row  space-x-11">
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            </div>
 
-                      </motion.div>
-                    </a>
-                    <a href={work?.workCodeLink} target="_blank" rel="noreferrrer" className="opacity-0 group-hover:opacity-100 absolute top-[50%] left-[50%]">
-                      <motion.div
-                        whileInView={{ scale: [0, 1] }}
-                        whileHover={{ scale: [1, 0.9] }}
-                        transition={{ duration: 0.25 }}
-                        className="app__flex"
-                      >
+          </div>
+          <div className="border-gray-300 bg-slate-100 animate-bounce   shadow-2xl p-3">
+            <div className="py-32 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-4 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-8 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-1  flex flex-row  space-x-11">
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            </div>
 
-                        <AiFillGithub size={30} />
-                      </motion.div>
-                    </a>
-                  </motion.div>
-                </div>
-                <div className="app__work-content app__flex flex flex-col items-center">
-                  <h4 className="bold-text font-semibold text-xl lg:mt-2 capitalize">{work?.workName}</h4>
-                  <p className="p-text text-center ">{work?.workDescription}</p>
-                  <div className="app__work-tag app__flex  mt-3" >
-                    <div className="flex flex-row  items-center justify-center flex-wrap ">
-                      {/* {tagsArray = work?.tags[0]?.split(",") || []} */}
-                      {work?.tags[0]?.split(",").slice(0, 2).map((item, index) => (
-                        <p key={`${item}-${index}`} className="py-2  px-4 rounded-lg bg-primaryColor  text-black app__flex font-semibold cursor-pointer transition-all  duration-300 ease-in-out capitalize  hover:bg-secondaryColor hover:text-whiteColor  p-text mx-1 my-1">
-                          {item.trim()} 
-                        </p>
-                      ))}
+          </div>
+          <div className="border-gray-300 bg-slate-100 animate-bounce   shadow-2xl p-3">
+            <div className="py-32 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-4 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-8 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-1  flex flex-row  space-x-11">
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            </div>
 
+          </div>
+          <div className="border-gray-300 bg-slate-100 animate-bounce   shadow-2xl p-3">
+            <div className="py-32 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-4 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-8 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-1  flex flex-row  space-x-11">
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            </div>
+
+          </div>
+          <div className="border-gray-300 bg-slate-100 animate-bounce   shadow-2xl p-3">
+            <div className="py-32 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-4 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-8 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-1  flex flex-row  space-x-11">
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            </div>
+
+          </div>
+          <div className="border-gray-300 bg-slate-100 animate-bounce   shadow-2xl p-3">
+            <div className="py-32 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-4 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-8 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-1  flex flex-row  space-x-11">
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            </div>
+
+          </div>
+          <div className="border-gray-300 bg-slate-100 animate-bounce   shadow-2xl p-3">
+            <div className="py-32 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-4 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-8 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-1  flex flex-row  space-x-11">
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            </div>
+
+          </div>
+          <div className="border-gray-300 bg-slate-100 animate-bounce   shadow-2xl p-3">
+            <div className="py-32 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-4 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-8 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-1  flex flex-row  space-x-11">
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            </div>
+
+          </div>
+          <div className="border-gray-300 bg-slate-100 animate-bounce   shadow-2xl p-3">
+            <div className="py-32 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-4 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-8 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            <div className="py-1  flex flex-row  space-x-11">
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+              <div className="py-2 my-2 rounded-xl  shadow-md border-primaryColor"></div>
+            </div>
+
+          </div>
+        </div> :
+        <motion.div
+          animate={animateCard}
+          transition={{ duration: 0.5, delayChildren: 0.5 }}
+          className="app__work-portfolio grid lg:grid-cols-3 grid-col-1 gap-4"
+        >
+          {
+            filterWork.map((work, index) => (
+              <div key={work + index} className="app__work-item hover:shadow-2xl p-4 rounded-lg bg-white text-black   app__fles">
+                <div className="app__work-img relative app__flex">
+                  <div className="relative">
+                    <img className="w-full   lg:h-[200px] md:h-[350px] rounded-lg" src={work?.workImgUrl} alt={work?.workName} />
+                    <motion.div
+                      whileHover={{ opacity: [0, 1] }}
+                      transition={{ duration: 0.25, ease: "easeInOut", staggerChildren: 0.5 }}
+                      className="app__work-hover  opacity-0  absolute group hover:opacity-100  rounded-lg inset-0 w-full h-full hover:bg-black/20  app__flex"
+                    >
+                      <a href={work?.workProjectLink} className="opacity-0 absolute group-hover:opacity-100 top-[50%] left-[42%]   rounded-full" target="_blank" rel="noreferrrer">
+                        <motion.div
+                          whileInView={{ scale: [0, 1] }}
+                          whileHover={{ scale: [1, 0.9] }}
+                          transition={{ duration: 0.25 }}
+                          className="app__flex"
+                        >
+                          <AiFillEye size={30} />
+
+                        </motion.div>
+                      </a>
+                      <a href={work?.workCodeLink} target="_blank" rel="noreferrrer" className="opacity-0 group-hover:opacity-100 absolute top-[50%] left-[50%]">
+                        <motion.div
+                          whileInView={{ scale: [0, 1] }}
+                          whileHover={{ scale: [1, 0.9] }}
+                          transition={{ duration: 0.25 }}
+                          className="app__flex"
+                        >
+
+                          <AiFillGithub size={30} />
+                        </motion.div>
+                      </a>
+                    </motion.div>
+                  </div>
+                  <div className="app__work-content app__flex flex flex-col items-center">
+                    <h4 className="bold-text font-semibold text-xl lg:mt-2 capitalize">{work?.workName}</h4>
+                    <p className="p-text text-center ">{work?.workDescription}</p>
+                    <div className="app__work-tag app__flex  mt-3" >
+                      <div className="flex flex-row  items-center justify-center flex-wrap ">
+                        {/* {tagsArray = work?.tags[0]?.split(",") || []} */}
+                        {work?.tags[0]?.split(",").slice(0, 2).map((item, index) => (
+                          <p key={`${item}-${index}`} className="py-2  px-4 rounded-lg bg-primaryColor  text-black app__flex font-semibold cursor-pointer transition-all  duration-300 ease-in-out capitalize  hover:bg-secondaryColor hover:text-whiteColor  p-text mx-1 my-1">
+                            {item.trim()}
+                          </p>
+                        ))}
+
+                      </div>
                     </div>
                   </div>
+
+
+
+
                 </div>
-
-
-
-
               </div>
-            </div>
-          ))
-        }
-      </motion.div>
-    </Container>
+            ))
+          }
+        </motion.div>}
+    </Container >
   )
 }
 
-export default AppWrap(Work, "work")
+export default AppWrap(MotionWrap(Work), "work")

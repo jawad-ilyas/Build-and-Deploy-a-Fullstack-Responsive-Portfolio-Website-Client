@@ -12,7 +12,7 @@ const Navbar = () => {
           <h1 className='font-bold text-2xl  hover:text-secondaryColor hover:duration-300 cursor-pointer p-4 md:p-0'>JMD</h1>
         </div>
         <ul className='sm:flex hidden '>
-          {["home", "about", "work", "skills", "contact"].map((link) => (
+          {["home", "about", "work", "skills","testimonial",  "contact"].map((link) => (
             <li key={`link-${link}`}>
               <div />
               <a className='ms-2 text-gray-600 uppercase font-semibold hover:text-secondaryColor hover:duration-300' href={`#${link}`}>{link}</a>
