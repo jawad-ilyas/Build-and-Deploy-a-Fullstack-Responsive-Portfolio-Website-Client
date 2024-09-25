@@ -5,14 +5,31 @@ import { useState, useEffect } from "react"
 import Container from "../../container/Container"
 import { images } from "../../constants"
 import { useForm } from "react-hook-form"
+import axios from "axios"
 
 const Footer = () => {
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm()
-  const onSubmit = (data) => console.log(data)
+  const onSubmit = async (data) => {
+    console.log("form data ", data)
+    try {
+      console.log(`${ApiUrl}/contact/createContact`);
+
+      const response = await axios.post(`${ApiUrl}/contact/createContact`, data)
+      if (response?.data?.data) {
+        reset();
+      }
+    } catch (error) {
+      console.log("error into create contact", error)
+    }
+  }
+  useEffect(()=>{
+    axios.get(`${ApiUrl}/contact/fetchContact`)
+  },[])
 
   return (
     <div className="max-w-4xl mx-auto">
@@ -30,7 +47,7 @@ const Footer = () => {
             </div>
 
           </div>
-          <div  className="mt-8">
+          <div className="mt-8">
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col  space-y-4">
               <input className="outline-none border-none px-2 py-4 bg-primaryColor rounded" placeholder="Enter Your Name" {...register("contactName")} />
               {errors.contactName && <span>This field is required</span>}
