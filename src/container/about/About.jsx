@@ -5,10 +5,10 @@ import Container from "../Container"
 import MotionWrap from "../../wrapper/MotionWrap"
 import axios from "axios"
 import { ApiUrl } from "../../constant"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 const About = () => {
 
-  const [about, setAbout] = useEffect([])
+  const [about, setAbout] = useState([])
 
   const fetchWork = async () => {
 
